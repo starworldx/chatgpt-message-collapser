@@ -1,0 +1,127 @@
+/* ===========================================
+   ChatGPT Message Collapser - Styles
+   =========================================== */
+
+/* Toolbar - floating control panel */
+.cgpt-collapse-toolbar {
+  position: fixed;
+  top: 12px;
+  right: 60px;
+  z-index: 9999;
+  display: flex;
+  gap: 4px;
+  background: #2f2f2f;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 6px 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.cgpt-collapse-toolbar button {
+  background: #3a3a3a;
+  border: 1px solid #555;
+  border-radius: 6px;
+  color: #e0e0e0;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cgpt-collapse-toolbar button:hover {
+  background: #4a4a4a;
+  border-color: #666;
+}
+
+.cgpt-collapse-toolbar button:active {
+  background: #333;
+}
+
+/* Toggle button on each message - inline version */
+.cgpt-collapse-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  color: #888;
+  font-size: 12px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  user-select: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.cgpt-collapse-toggle:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.cgpt-collapse-toggle .chevron {
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.cgpt-collapse-toggle.collapsed .chevron {
+  transform: rotate(-90deg);
+}
+
+/* Container for toggle + message header */
+.cgpt-toggle-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Message content wrapper - we add this class */
+.cgpt-message-content {
+  position: relative;
+  transition: max-height 0.25s ease;
+}
+
+/* Collapsed state - 3 line preview with fade */
+.cgpt-message-content.collapsed {
+  max-height: 8em;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 50%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 50%,
+    transparent 100%
+  );
+}
+
+/* Make the article position relative for toggle button positioning */
+article[data-testid^="conversation-turn-"] {
+  position: relative;
+}
+
+/* Counter display in toolbar */
+.cgpt-collapse-counter {
+  color: #888;
+  font-size: 12px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+}
+
+/* Hide toolbar when not in a conversation */
+body:not(:has(article[data-testid^="conversation-turn-"])) .cgpt-collapse-toolbar {
+  display: none;
+}
