@@ -1,6 +1,3 @@
-# chatgpt-message-collapser
-Collapses user and AI conversations to make it easy to find specific chats and scrolling
-
 # ChatGPT Message Collapser
 
 A Chrome extension to collapse and expand messages in ChatGPT conversations. Helps navigate long threads by showing a 3-line preview of each message.
